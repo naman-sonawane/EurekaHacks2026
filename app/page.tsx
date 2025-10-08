@@ -1,102 +1,116 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [email, setEmail] = useState('');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      // Here you would typically send the email to your backend
+      console.log('Email submitted:', email);
+      alert('Thank you for signing up! We\'ll keep you updated.');
+      setEmail('');
+    }
+  };
+
+  return (
+    <div className="hero-container">
+
+      {/* Header */}
+      <header className="header">
+        <div className="header-left">
+          <Image
+            src="/socials/logo.png"
+            alt="EUREKAHACKS Logo"
+            width={40}
+            height={40}
+            className="header-logo"
+            priority
+          />
+          <nav>
+            <ul className="nav-links">
+              <li><a href="#about">ABOUT</a></li>
+              <li><a href="#last-year">LAST YEAR</a></li>
+              <li><a href="#contact">CONTACT</a></li>
+            </ul>
+          </nav>
+          <Image
+            src="/socials/bolt.svg"
+            alt="Bolt"
+            width={24}
+            height={24}
+            className="bolt-icon"
+          />
+        </div>
+        <div className="social-icons">
+          <a href="https://instagram.com/eurekahacks" target="_blank" rel="noopener noreferrer">
+            <Image src="/socials/insta.svg" alt="Instagram" width={24} height={24} />
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href="https://linkedin.com/company/eurekahacks" target="_blank" rel="noopener noreferrer">
+            <Image src="/socials/linkedin.svg" alt="LinkedIn" width={24} height={24} />
+          </a>
+          <a href="https://github.com/eurekahacks" target="_blank" rel="noopener noreferrer">
+            <Image src="/socials/github.svg" alt="GitHub" width={24} height={24} />
+          </a>
+          <a href="mailto:hello@eurekahacks.ca">
+            <Image src="/socials/email.svg" alt="Email" width={24} height={24} />
           </a>
         </div>
+      </header>
+
+      {/* Main content */}
+      <main className="main-content">
+        {/* Character silhouettes */}
+        <div className="characters">
+          <div className="character-left"></div>
+          <div className="character-right"></div>
+        </div>
+
+        {/* Main title */}
+        <h1 className="main-title">EUREKAHACKS</h1>
+
+        {/* Event details */}
+        <div className="event-details">
+          <div className="event-detail">MARCH 2026</div>
+          <div className="event-detail">LOCATION TBD</div>
+        </div>
+
+        {/* Central logo */}
+        <div className="central-logo">
+          <Image
+            src="/socials/logo.png"
+            alt="EUREKAHACKS Central Logo"
+            width={160}
+            height={160}
+            priority
+          />
+        </div>
+
+        {/* Email signup form */}
+        <form className="signup-form" onSubmit={handleEmailSubmit}>
+          <h2 className="signup-title">SIGN UP FOR UPDATES</h2>
+          <div className="email-input-container">
+            <input
+              type="email"
+              className="email-input"
+              placeholder="ENTER YOUR EMAIL ..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit" className="submit-button">
+              <Image src="/socials/send.svg" alt="Send" width={20} height={20} />
+            </button>
+          </div>
+        </form>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>INTERESTED IN SPONSORING? CONTACT HELLO@EUREKAHACKS.CA</p>
       </footer>
     </div>
   );
