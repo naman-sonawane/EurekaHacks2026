@@ -117,14 +117,17 @@ body {
   height: 40px;
 }
 
+.bolt-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
 .bolt-icon {
   filter: brightness(0) invert(1);
   transition: all 0.3s ease;
-}
-
-.bolt-icon:hover {
-  transform: scale(1.2);
-  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(60deg);
 }
 
 .nav-links {
@@ -173,7 +176,7 @@ body {
   filter: brightness(0) invert(1);
 }
 
-/* Cloud layers */
+/* Cloud layers - centered lighting */
 .clouds {
   position: absolute;
   top: 0;
@@ -186,18 +189,34 @@ body {
 
 .light-clouds {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-image: 
+    url('/socials/lightleftcloud.png'),
+    url('/socials/lightrightcloud.png');
+  background-position: center left, center right;
+  background-repeat: no-repeat;
+  background-size: 40% auto, 40% auto;
+  opacity: 0.6;
 }
 
 .dark-clouds {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-image: 
+    url('/socials/darkleftcloud.png'),
+    url('/socials/darkrightcloud.png');
+  background-position: center left, center right;
+  background-repeat: no-repeat;
+  background-size: 40% auto, 40% auto;
+  opacity: 0.8;
   z-index: 2;
 }
 

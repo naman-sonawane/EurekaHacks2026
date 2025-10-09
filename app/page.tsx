@@ -37,13 +37,6 @@ export default function Home() {
               <li><a href="#contact">CONTACT</a></li>
             </ul>
           </nav>
-          <Image
-            src="/socials/bolt.svg"
-            alt="Bolt"
-            width={24}
-            height={24}
-            className="bolt-icon"
-          />
         </div>
         <div className="social-icons">
           <a href="https://instagram.com/eurekahacks" target="_blank" rel="noopener noreferrer">
@@ -67,6 +60,16 @@ export default function Home() {
         <div className="characters">
           <div className="character-left"></div>
           <div className="character-right"></div>
+        </div>
+
+        <div className="bolt-container">
+          <Image
+            src="/socials/bolt.svg"
+            alt="Bolt"
+            width={800}
+            height={800}
+            className="bolt-icon"
+          />
         </div>
 
         {/* Main title */}
