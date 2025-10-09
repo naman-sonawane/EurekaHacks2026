@@ -36,7 +36,7 @@ export default function Home() {
         setIsError(true);
         setMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setIsError(true);
       setMessage('Network error. Please check your connection and try again.');
     } finally {
