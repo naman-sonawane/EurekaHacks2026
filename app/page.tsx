@@ -2,12 +2,89 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const slideInVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const scaleInVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 25
+      }
+    }
+  };
+
+  const slideUpVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const popVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 500,
+        damping: 15,
+        duration: 0.2
+      }
+    }
+  };
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,36 +127,78 @@ export default function Home() {
       {/* Header */}
       <header className="header">
         <div className="header-left">
-          <Image
-            src="/socials/logo.png"
-            alt="EUREKAHACKS Logo"
-            width={40}
-            height={40}
-            className="header-logo"
-            priority
-          />
-          <nav>
+          <motion.div
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.1 }}
+          >
+            <Image
+              src="/socials/logo.png"
+              alt="EUREKAHACKS Logo"
+              width={40}
+              height={40}
+              className="header-logo"
+              priority
+            />
+          </motion.div>
+          <motion.nav
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <ul className="nav-links">
-              <li><a href="#about">ABOUT</a></li>
-              <li><a href="#last-year">LAST YEAR</a></li>
-              <li><a href="#contact">CONTACT</a></li>
+              <motion.li variants={fadeInVariants}><a href="#about">ABOUT</a></motion.li>
+              <motion.li variants={fadeInVariants}><a href="#last-year">LAST YEAR</a></motion.li>
+              <motion.li variants={fadeInVariants}><a href="#contact">CONTACT</a></motion.li>
             </ul>
-          </nav>
+          </motion.nav>
         </div>
-        <div className="social-icons">
-          <a href="https://instagram.com/eurekahacks" target="_blank" rel="noopener noreferrer">
+        <motion.div 
+          className="social-icons"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.a 
+            href="https://instagram.com/eurekahacks" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            variants={fadeInVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Image src="/socials/insta.svg" alt="Instagram" width={24} height={24} />
-          </a>
-          <a href="https://linkedin.com/company/eurekahacks" target="_blank" rel="noopener noreferrer">
+          </motion.a>
+          <motion.a 
+            href="https://linkedin.com/company/eurekahacks" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            variants={fadeInVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Image src="/socials/linkedin.svg" alt="LinkedIn" width={24} height={24} />
-          </a>
-          <a href="https://github.com/eurekahacks" target="_blank" rel="noopener noreferrer">
+          </motion.a>
+          <motion.a 
+            href="https://github.com/eurekahacks" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            variants={fadeInVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Image src="/socials/github.svg" alt="GitHub" width={24} height={24} />
-          </a>
-          <a href="mailto:hello@eurekahacks.ca">
+          </motion.a>
+          <motion.a 
+            href="mailto:hello@eurekahacks.ca"
+            variants={fadeInVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Image src="/socials/email.svg" alt="Email" width={24} height={24} />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </header>
 
       {/* Main content */}
@@ -101,16 +220,48 @@ export default function Home() {
         </div>
 
         {/* Main title */}
-        <h1 className="main-title">EUREKAHACKS</h1>
+        <motion.h1 
+          className="main-title"
+          variants={popVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.2 }}
+        >
+          EUREKAHACKS
+        </motion.h1>
 
         {/* Event details */}
-        <div className="event-details">
-          <div className="event-detail">MARCH 2026</div>
-          <div className="event-detail">LOCATION TBD</div>
-        </div>
+        <motion.div 
+          className="event-details"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.4 }}
+        >
+          <motion.div 
+            className="event-detail"
+            variants={fadeInVariants}
+          >
+            MARCH 2026
+          </motion.div>
+          <motion.div 
+            className="event-detail"
+            variants={fadeInVariants}
+          >
+            LOCATION TBD
+          </motion.div>
+        </motion.div>
 
         {/* Central logo */}
-        <div className="central-logo">
+        <motion.div 
+          className="central-logo"
+          variants={scaleInVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <Image
             src="/socials/logo.png"
             alt="EUREKAHACKS Central Logo"
@@ -118,12 +269,33 @@ export default function Home() {
             height={160}
             priority
           />
-        </div>
+        </motion.div>
 
         {/* Email signup form */}
-        <form className="signup-form" onSubmit={handleEmailSubmit}>
-          <h2 className="signup-title">SIGN UP FOR UPDATES</h2>
-          <div className="email-input-container">
+        <motion.form 
+          className="signup-form" 
+          onSubmit={handleEmailSubmit}
+          variants={slideUpVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.8 }}
+        >
+          <motion.h2 
+            className="signup-title"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.9 }}
+          >
+            SIGN UP FOR UPDATES
+          </motion.h2>
+          <motion.div 
+            className="email-input-container"
+            variants={fadeInVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1.0 }}
+          >
             <input
               type="email"
               className="email-input"
@@ -133,30 +305,50 @@ export default function Home() {
               required
               disabled={isLoading}
             />
-            <button 
+            <motion.button 
               type="submit" 
               className="submit-button"
               disabled={isLoading}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {isLoading ? (
                 <div className="loading-spinner"></div>
               ) : (
                 <Image src="/socials/send.svg" alt="Send" width={20} height={20} />
               )}
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
           {message && (
-            <div className={`message ${isError ? 'error' : 'success'}`}>
+            <motion.div 
+              className={`message ${isError ? 'error' : 'success'}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               {message}
-            </div>
+            </motion.div>
           )}
-        </form>
+        </motion.form>
       </main>
 
       {/* Footer */}
-      <footer className="footer">
-        <p>INTERESTED IN SPONSORING? CONTACT HELLO@EUREKAHACKS.CA</p>
-      </footer>
+      <motion.footer 
+        className="footer"
+        variants={slideUpVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 1.2 }}
+      >
+        <motion.p
+          variants={fadeInVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 1.3 }}
+        >
+          INTERESTED IN SPONSORING? CONTACT HELLO@EUREKAHACKS.CA
+        </motion.p>
+      </motion.footer>
     </div>
   );
 }
