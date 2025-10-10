@@ -149,8 +149,8 @@ export default function Home() {
           >
             <ul className="nav-links">
               <motion.li variants={fadeInVariants}><a href="#about">ABOUT</a></motion.li>
-              <motion.li variants={fadeInVariants}><a href="#last-year">LAST YEAR</a></motion.li>
-              <motion.li variants={fadeInVariants}><a href="#contact">CONTACT</a></motion.li>
+              <motion.li variants={fadeInVariants}><a href="https://2024.eurekahacks.ca/">LAST YEAR</a></motion.li>
+              <motion.li variants={fadeInVariants}><a href="mailto:hello@eurekahacks.ca">CONTACT</a></motion.li>
             </ul>
           </motion.nav>
         </div>
@@ -161,7 +161,7 @@ export default function Home() {
           animate="visible"
         >
           <motion.a 
-            href="https://instagram.com/eurekahacks" 
+            href="https://instagram.com/eureka_hacks" 
             target="_blank" 
             rel="noopener noreferrer"
             variants={fadeInVariants}
