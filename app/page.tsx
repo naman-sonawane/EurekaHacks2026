@@ -207,9 +207,10 @@ export default function Home() {
           <Image
             src="/socials/bolt.svg"
             alt="Bolt"
-            width={500}
-            height={500}
+            width={0}
+            height={0}
             className="bolt-icon"
+            style={{ width: 'auto', height: 'auto' }}
           />
         </div>
 
