@@ -88,9 +88,9 @@ export default function Home() {
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) return;
-    
+
     setIsLoading(true);
     setIsError(false);
     setMessage('');
@@ -154,15 +154,15 @@ export default function Home() {
             </ul>
           </motion.nav>
         </div>
-        <motion.div 
+        <motion.div
           className="social-icons"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.a 
-            href="https://instagram.com/eureka_hacks" 
-            target="_blank" 
+          <motion.a
+            href="https://instagram.com/eureka_hacks"
+            target="_blank"
             rel="noopener noreferrer"
             variants={fadeInVariants}
             whileHover={{ scale: 1.1 }}
@@ -170,9 +170,9 @@ export default function Home() {
           >
             <Image src="/socials/insta.svg" alt="Instagram" width={24} height={24} />
           </motion.a>
-          <motion.a 
-            href="https://linkedin.com/company/eurekahacks" 
-            target="_blank" 
+          <motion.a
+            href="https://linkedin.com/company/eurekahacks"
+            target="_blank"
             rel="noopener noreferrer"
             variants={fadeInVariants}
             whileHover={{ scale: 1.1 }}
@@ -180,9 +180,9 @@ export default function Home() {
           >
             <Image src="/socials/linkedin.svg" alt="LinkedIn" width={24} height={24} />
           </motion.a>
-          <motion.a 
-            href="https://github.com/eurekahacks" 
-            target="_blank" 
+          <motion.a
+            href="https://github.com/eurekahacks"
+            target="_blank"
             rel="noopener noreferrer"
             variants={fadeInVariants}
             whileHover={{ scale: 1.1 }}
@@ -190,7 +190,7 @@ export default function Home() {
           >
             <Image src="/socials/github.svg" alt="GitHub" width={24} height={24} />
           </motion.a>
-          <motion.a 
+          <motion.a
             href="mailto:hello@eurekahacks.ca"
             variants={fadeInVariants}
             whileHover={{ scale: 1.1 }}
@@ -203,12 +203,6 @@ export default function Home() {
 
       {/* Main content */}
       <main className="main-content">
-        {/* Character silhouettes */}
-        <div className="characters">
-          <div className="character-left"></div>
-          <div className="character-right"></div>
-        </div>
-
         <div className="bolt-container">
           <Image
             src="/socials/bolt.svg"
@@ -220,7 +214,7 @@ export default function Home() {
         </div>
 
         {/* Main title */}
-        <motion.h1 
+        <motion.h1
           className="main-title"
           variants={popVariants}
           initial="hidden"
@@ -231,20 +225,20 @@ export default function Home() {
         </motion.h1>
 
         {/* Event details */}
-        <motion.div 
+        <motion.div
           className="event-details"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.4 }}
         >
-          <motion.div 
+          <motion.div
             className="event-detail"
             variants={fadeInVariants}
           >
             MARCH 2026
           </motion.div>
-          <motion.div 
+          <motion.div
             className="event-detail"
             variants={fadeInVariants}
           >
@@ -253,7 +247,7 @@ export default function Home() {
         </motion.div>
 
         {/* Central logo */}
-        <motion.div 
+        <motion.div
           className="central-logo"
           variants={scaleInVariants}
           initial="hidden"
@@ -272,15 +266,15 @@ export default function Home() {
         </motion.div>
 
         {/* Email signup form */}
-        <motion.form 
-          className="signup-form" 
+        <motion.form
+          className="signup-form"
           onSubmit={handleEmailSubmit}
           variants={slideUpVariants}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.8 }}
         >
-          <motion.h2 
+          <motion.h2
             className="signup-title"
             variants={fadeInVariants}
             initial="hidden"
@@ -289,7 +283,7 @@ export default function Home() {
           >
             SIGN UP FOR UPDATES
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="email-input-container"
             variants={fadeInVariants}
             initial="hidden"
@@ -305,8 +299,8 @@ export default function Home() {
               required
               disabled={isLoading}
             />
-            <motion.button 
-              type="submit" 
+            <motion.button
+              type="submit"
               className="submit-button"
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
@@ -320,7 +314,7 @@ export default function Home() {
             </motion.button>
           </motion.div>
           {message && (
-            <motion.div 
+            <motion.div
               className={`message ${isError ? 'error' : 'success'}`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -333,7 +327,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <motion.footer 
+      <motion.footer
         className="footer"
         variants={slideUpVariants}
         initial="hidden"

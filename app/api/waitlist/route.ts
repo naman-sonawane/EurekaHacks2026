@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
     const collection = db.collection<WaitlistEmail>('waitlist');
 
     // Check if email already exists
-    const existingEmail = await collection.findOne({ 
-      email: email.toLowerCase().trim() 
+    const existingEmail = await collection.findOne({
+      email: email.toLowerCase().trim()
     });
 
     if (existingEmail) {
@@ -40,9 +40,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Get client IP and user agent for tracking
-    const ipAddress = request.headers.get('x-forwarded-for') || 
-                     request.headers.get('x-real-ip') || 
-                     'unknown';
+    const ipAddress = request.headers.get('x-forwarded-for') ||
+      request.headers.get('x-real-ip') ||
+      'unknown';
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     // Insert new email
@@ -56,10 +56,10 @@ export async function POST(request: NextRequest) {
     const result = await collection.insertOne(waitlistEntry);
 
     return NextResponse.json(
-      { 
-        success: true, 
+      {
+        success: true,
         message: 'Successfully added to waitlist',
-        id: result.insertedId 
+        id: result.insertedId
       },
       { status: 201 }
     );
@@ -77,9 +77,9 @@ export async function GET() {
   try {
     const db = await getDatabase();
     const collection = db.collection<WaitlistEmail>('waitlist');
-    
+
     const count = await collection.countDocuments();
-    
+
     return NextResponse.json({ count });
   } catch (error) {
     console.error('Error getting waitlist count:', error);
