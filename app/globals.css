@@ -539,7 +539,7 @@ body {
   }
 
   .bolt-icon {
-    width: 30rem !important;
+    width: 32rem !important;
     height: auto !important;
     max-width: none !important;
   }
@@ -609,8 +609,8 @@ body {
   }
 
   .bolt-icon {
-    width: 30rem !important;
-    height: auto !important;
+    width: 32rem !important;
+    height: max-content !important;
     max-width: none !important;
     transform: translateX(1rem);
   }
