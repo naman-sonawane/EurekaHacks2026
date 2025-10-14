@@ -467,6 +467,68 @@ body {
 }
 
 /* Responsive design */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  /* Medium PC - make everything a bit smaller */
+  .main-title {
+    font-size: clamp(5rem, 7vw, 6.5rem);
+  }
+
+  .event-details {
+    gap: 8rem;
+  }
+
+  .bolt-icon {
+    width: 35rem !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .central-logo {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .header {
+    padding: 0.8rem 2rem;
+    width: 90vw;
+  }
+
+  .header-left {
+    gap: 2rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .social-icons {
+    gap: 1.2rem;
+  }
+
+  .signup-form {
+    padding: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  .signup-title {
+    font-size: 1.1rem;
+  }
+
+  .email-input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    width: 45px;
+    height: 45px;
+  }
+}
+
 @media (max-width: 1024px) {
 
   /* Laptop */
