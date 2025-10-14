@@ -149,7 +149,7 @@ export default function Home() {
           >
             <ul className="nav-links">
               <motion.li variants={fadeInVariants}><a href="#about">ABOUT</a></motion.li>
-              <motion.li variants={fadeInVariants}><a href="https://2024.eurekahacks.ca/">LAST YEAR</a></motion.li>
+              <motion.li variants={fadeInVariants}><a href="https://2025.eurekahacks.ca/">LAST YEAR</a></motion.li>
               <motion.li variants={fadeInVariants}><a href="mailto:hello@eurekahacks.ca">CONTACT</a></motion.li>
             </ul>
           </motion.nav>
