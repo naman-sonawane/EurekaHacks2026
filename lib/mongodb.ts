@@ -34,7 +34,7 @@ export default clientPromise;
 
 export async function getDatabase(): Promise<Db> {
   const client = await clientPromise;
-  return client.db('eurekahacks');
+  return client.db(process.env.NODE_ENV === 'development' ? 'eurekahacks-dev' : 'eurekahacks');
 }
 
 export interface WaitlistEmail {
@@ -43,4 +43,5 @@ export interface WaitlistEmail {
   createdAt: Date;
   ipAddress?: string;
   userAgent?: string;
+  source?: string;
 }
