@@ -4,7 +4,7 @@ import { getDatabase, WaitlistEmail } from '@/lib/mongodb';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email } = body;
+    const { email, source } = body;
 
     // Validate email
     if (!email || typeof email !== 'string') {
@@ -50,7 +50,8 @@ export async function POST(request: NextRequest) {
       email: email.toLowerCase().trim(),
       createdAt: new Date(),
       ipAddress,
-      userAgent
+      userAgent,
+      source
     };
 
     const result = await collection.insertOne(waitlistEntry);

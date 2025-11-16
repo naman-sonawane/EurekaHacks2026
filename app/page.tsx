@@ -95,13 +95,15 @@ export default function Home() {
     setIsError(false);
     setMessage('');
 
+    const source = new URLSearchParams(window.location.search).get('source') || 'unknown';
+
     try {
       const response = await fetch('/api/waitlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source }),
       });
 
       const data = await response.json();
