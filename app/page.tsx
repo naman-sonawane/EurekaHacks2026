@@ -95,7 +95,13 @@ export default function Home() {
     setIsError(false);
     setMessage('');
 
-    const source = new URLSearchParams(window.location.search).get('source') || 'unknown';
+    const params = new URLSearchParams(window.location.search);
+
+    const source =
+      params.has('source') ? params.get('source') :
+      (params.has('fbclid') || params.has('brid')) ? 'instagram' :
+      'unknown';
+
 
     try {
       const response = await fetch('/api/waitlist', {
